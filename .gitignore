@@ -2,3 +2,7 @@
 /api/obj
 /.vs
 /api/.vs
+/api.Business/bin
+/api.Business/obj
+/api.Tests/bin
+/api.Tests/obj
