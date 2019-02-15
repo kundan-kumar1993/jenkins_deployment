@@ -15,7 +15,6 @@ namespace api.Tests
             // Act
             var result = reservation.CanMakeReservation(new User() { Role = 1 });
 
-            // Assert
             Assert.IsTrue(result);
         }
     }
