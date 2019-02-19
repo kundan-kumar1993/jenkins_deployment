@@ -24,8 +24,7 @@ pipeline {
 				
 				stage ('Four') {
 					steps {
-						dotnet test api.Tests/api.Tests.csproj
-						dotnet test "--logger:trx;LogFileName=Results.trx"
+						echo "Completed all processes!!";
 					}
 				}
 			}
