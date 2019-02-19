@@ -4,27 +4,24 @@ pipeline {
 				stage('One') {
 					steps {
 						echo "Hi, this is Kundan from Evry"
-						dotnet restore
 					}
 				}
 				
 				stage('Two') {
 					steps {
 						input('Do you want to proceed?')
-						dotnet msbuild api.sln
 					}
 				}
 				
 				stage ('Three') {
 					steps {
 						echo "Processing further..."
-						dotnet publish
 					}
 				}
 				
 				stage ('Four') {
 					steps {
-						echo "Completed all processes!!";
+						echo "Running the integration test..."
 					}
 				}
 			}
