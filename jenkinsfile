@@ -4,41 +4,28 @@ pipeline {
 				stage('One') {
 					steps {
 						echo "Hi, this is Kundan from Evry"
+						dotnet restore
 					}
 				}
 				
 				stage('Two') {
 					steps {
 						input('Do you want to proceed?')
+						dotnet msbuild api.sln
 					}
 				}
 				
 				stage ('Three') {
 					steps {
-						steps {
-							echo "Hello"
-						}
+						echo "Processing further..."
+						dotnet publish
 					}
 				}
 				
 				stage ('Four') {
-					parallel {
-						stage('Unit Test') {
-							steps {
-								echo "Running the unit test..."
-							}
-						}
-						stage('Integration Test') {
-							agent {
-								docker {
-									reuseNode false
-									image 'ubuntu'
-								}
-							}
-							steps {
-								echo "Running the integration test..."
-							}
-						}
+					steps {
+						dotnet test api.Tests/api.Tests.csproj
+						dotnet test "--logger:trx;LogFileName=Results.trx"
 					}
 				}
 			}
